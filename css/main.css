@@ -7,13 +7,29 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+.page {
+    height: 100%;
+    min-height: 100%;
+    width: 87.5%;
+    min-width: 87.5%;
+    background: white;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    position: absolute;
+    left: 12.5%
+}
 .yellow {
     background: yellow;
+}
+.blue {
+    background: blue;
 }
 * {
     box-sizing: border-box;
 }
-
+html {
+    overflow: hidden;
+}
 body {
     margin: 0;
 }
@@ -43,18 +59,18 @@ body {
 .fullscreen {
     height: 100%;
     min-height: 100%;
-    width: 100%;
-    min-width: 100%;
+    width: 87.5%;
+    min-width: 87.5%;
 }
 
 .hidden {
     display: none;
-    margin: 100%;
+    margin: 50%;
+
 }
 .ontop {
     /*display: block;*/
 }
-
 
 
 
