@@ -6,12 +6,14 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta
+                name='viewport'
+                content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
+        >
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/reset.css">
-
-        <!--<link rel="apple-touch-icon" href="apple-touch-icon.png">-->
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="css/main.css">
@@ -19,12 +21,19 @@
         <!--<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>-->
     </head>
     <body >
-
+    <header id="nav_header">
+        <!--TODO: make nav header a static element at the top of the page when nav is hidden and a fixed position button when nav is not hidden-->
+        <div id="nav_button" onclick="show_hide_nav()">
+            <p></p>
+            <p></p>
+            <p></p>
+        </div>
+    </header>
     <div class="grid">
         <div class="grid__item panel-1">
             <div class="content">
                 <!--navbar-->
-
+<!---->
                 <nav class="nav flex-column">
                     <a id="pg1" class="nav-link active" href="home">Home</a>
                     <a id="pg2" class="nav-link" href="about_me">About Me</a>
@@ -33,133 +42,62 @@
                     <a id="pg5" class="nav-link" href="my_music">My Music</a>
                     <a id="pg6" class="nav-link" href="contact">Contact</a>
                 </nav>
-
+<!---->
             </div>
         </div>
-        <div class="grid__item panel-2">
-            <div class="content fullscreen pagfes">
-
-                <div id="home_" class="pg_1 yellow page ">
+        <div class="grid__item panel-2" onclick="show_hide_nav('hide')">
+            <div class="content fullscreen pages">
+<!---->
+                <div id="home_" class="pg_1 page ">
                     <div >
-                        <p>
-                            some text that will overflownsectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                        </p>
-                        <p>
-                            some text that will overflownsectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                        </p>
-                        <p>
-                            some text that will overflownsectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                        </p>
-                        <p>
-                            some text that will overflownsectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                        </p>
-                        <p>
-                            some text that will overflownsectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                        </p>
-                        <p>
-                            some text that will overflownsectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                        </p>
-                        <p>
-                            some text that will overflownsectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                        </p>
-                        <p>
-                            some text that will overflownsectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                        </p>
-                        <p>
-                            some text that will overflownsectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                        </p>
-                        <p>
-                            some text that will overflownsectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                        </p>
-                        <p>
-                            some text that will overflownsectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                        </p>
-                        <p>
-                            some text that will overflownsectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                        </p>
-                        <p>
-                            some text that will overflownsectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                        </p>
-                        <p>
-                            some text that will overflownsectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                        </p>
-                        <p>
-                            some text that will overflownsectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                        </p>
-                        <p>
-                            some text that will overflownsectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                        </p>
-                        <p>
-                            some text that will overflownsectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                        </p>
-                        <p>
-                            some text that will overflownsectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                        </p>
-                        <p>
-                            some text that will overflownsectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                        </p>
-                        <p>
-                            some text that will overflownsectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                        </p>
-                        <p>
-                            some text that will overflownsectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                        </p>
-                        <p>
-                            some text that will overflownsectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                        </p>
-                        <p>
-                            some text that will overflownsectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                        </p>
-                        <p>
-                            some text that will overflownsectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                        </p>
-
+<!---->
+<!---->
                     </div>
                 </div>
-
+<!---->
                 <div id="about_me_" class="pg_2 page blue hidden" style="">
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
                     </p>
                 </div>
-
+<!---->
                 <div id="Resume_" class="pg_3 page hidden" style="">
                     <p>
                         page resume stuff it. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
                     </p>
                 </div>
-
+<!---->
                 <div id="Portfolio_" class="pg_4 page hidden" style="">
                     <p>
                         Portfolio stuff Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
                     </p>
                 </div>
-
+<!---->
                 <div id="My_Music_" class="pg_5 page hidden" style="">
                     <p>
                         music stuff tur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
                     </p>
                 </div>
-
+<!---->
                 <div id="Contact_" class="pg_6 page hidden" style="">
                     <p>
                         contact stuff elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
                     </p>
                 </div>
-
-
-
+<!---->
+<!---->
+<!---->
             </div>
         </div>
     </div>
-    <script
+      <script
             src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <script src="js/main.js"></script>
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+         <!--Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <!--<script>-->
             <!--&lt;!&ndash;(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=&ndash;&gt;-->
             <!--&lt;!&ndash;function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;&ndash;&gt;-->
