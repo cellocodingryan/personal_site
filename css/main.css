@@ -14,13 +14,11 @@
     min-height: 100%;
     width: 87.5%;
     min-width: 87.5%;
-    /*width: 100%;*/
-    /*min-width: 100%;*/
     background: white;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     position: absolute;
-    /*left: 12.5%*/
+
 }
 .yellow {
     background: yellow;
@@ -37,11 +35,13 @@ html {
 }
 body {
     margin: 0;
+    overflow: hidden;
     height: 100%;
 }
 
+
 .grid {
-    height: 100vh;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 7fr;
 }
@@ -54,9 +54,12 @@ body {
 }
 
 .panel-1 {
-    background: #4dab6b;
-
+    background: #ab1d8f;
     color: #fff;
+    overflow: hidden;
+}
+.panel-1 a {
+    color: inherit;
 }
 
 .content {
@@ -92,6 +95,23 @@ body {
     display: none;
     z-index: 4;
 }
+nav {
+    text-align: center;
+}
+nav a.active {
+    background: rgba(0,0,0,.2);
+    border-radius: 15px;
+    /*!~!!!!!NOTE!!!!!~~! if values changed must be changed in js where tmp nav is created!!!!!!*/
+}
+
+/*page 2 with resume styling, less specific in this case*/
+.pg_2 {
+    padding: 0;
+}
+.pg_2 iframe {
+    height: 100%;
+    width: 100%;
+}
 @media (max-width: 850px) {
     .page {
         width: 100%;
@@ -120,16 +140,117 @@ body {
         padding: 0;
         height: 5px;
     }
+    #nav_button {
+        opacity: .2;
+    }
 
 
 }
 /*home*/
 
-#home_ {
+.pg_1 {
     background: url("../pictures/IMG_0227.JPG");
     background-size: cover;
+    padding: 0;
+}
+.pg_1 .hug_bottom_textbox {
+    position: absolute;
+    bottom: 5%;
+    width: 100%;
+    /*background: yellow;*/
+}
+.pg_1 h1 {
+    font-size: 4em;
+}
+.pg_1 h1,.pg_1 h3 {
+    text-align: center;
+    color: white;
+}
+.pg_1 span {
+    font-weight: bolder;
+}
+/*resume*/
+.pg_2 iframe {
+    /*max-width: 1000px;*/
 }
 
+/*contact page*/
+.pg_3 > .container {
+    background: rgba(0,0,0,.1);
+}
+.content_box_light_gray {
+    background: rgba(255,255,255,.3);
+    margin-top: 2%;
+    padding: 2%;
+}
+#contact_page > .container > .___row___ > .___col___:last-child h1 {
+    text-align: center;
+    font-size: 200%;
+    font-weight: 900;
+}
+#contact_page > .container > .___row___ > .___col___:last-child div h4 {
+    margin-bottom: 1%;
+}
+#contact_page > .container > .___row___ > .___col___ h4 {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 2%;
+    font-size: 125%;
+}
+#contact_page > .container > .___row___ > .___col___:first-child .content_box_light_gray > .container > .___row___ div:nth-child(2n+1) {
+    flex-grow: .1 !important; display: flex;align-items: center;margin-right: 1%
+}
+#contact_page > .container > .___row___ > .___col___:first-child .container > .___row___ > .___col___ > label {
+    display: inline;
+    padding: 0;
+    color: blue;
+}
+#contact_page > .container > .___row___ > .___col___ .content_box_light_gray > .container > .___row___ > .___col___ {
+    padding: 0;
+    /*background: blue;*/
+}
+#contact_page > .container > .___row___ > .___col___ .content_box_light_gray > .container > .___row___ > .___col___:nth-child(2) {
+    padding-right: 5%;
+    /*background: blue;*/
+}
+.content_box_light_gray {
+    background: rgba(255,255,255,.3);
+    margin-top: 2%;
+    padding: 2%;
+}
+#contact_page > .container {
+    /*height: 85%;*/
+    width: 100%;
+    max-width: 9999px;
+}
+#contact_page > .container > .___row___ {
+    /*height: 100%;*/
+    /*background: black;*/
+}
+#contact_page > .container > .___row___ > .___col___:first-child {
+    border-right: 1px solid yellow;
+    flex-grow: 2;
+}
+#contact_page > .container > .___row___ > .___col___:last-child {
+    /*border: 1px solid yellow;*/
+}
+
+h5 {
+    display: block;
+    margin: 0 auto;
+}
+
+/*external link page*/
+
+.pg_-3 iframe {
+    height: 100%;
+    width: 100%;
+}
+.pg_-3 {
+    border: solid 10px green;
+    padding: 1px;
+    overflow: hidden;
+}
 
 /*testing*/
 

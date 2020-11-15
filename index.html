@@ -22,7 +22,6 @@
     </head>
     <body >
     <header id="nav_header">
-        <!--TODO: make nav header a static element at the top of the page when nav is hidden and a fixed position button when nav is not hidden-->
         <div id="nav_button" onclick="show_hide_nav()">
             <p></p>
             <p></p>
@@ -33,60 +32,85 @@
         <div class="grid__item panel-1">
             <div class="content">
                 <!--navbar-->
-<!---->
-                <nav class="nav flex-column">
-                    <a id="pg1" class="nav-link active" href="home">Home</a>
-                    <a id="pg2" class="nav-link" href="about_me">About Me</a>
-                    <a id="pg3" class="nav-link" href="resume">Resume</a>
-                    <a id="pg4" class="nav-link" href="portfolio">Portfolio</a>
-                    <a id="pg5" class="nav-link" href="my_music">My Music</a>
-                    <a id="pg6" class="nav-link" href="contact">Contact</a>
+
+                <nav class="nav flex-column ">
+                    <a id="pg1" class="nav-link active" href="#home">Home</a>
+                    <a id="pg2" class="nav-link" href="#resume">Resume</a>
+                    <a id="pg3" class="nav-link" href="#contact">Contact</a>
                 </nav>
-<!---->
+
             </div>
         </div>
         <div class="grid__item panel-2" onclick="show_hide_nav('hide')">
             <div class="content fullscreen pages">
-<!---->
-                <div id="home_" class="pg_1 page ">
-                    <div >
-<!---->
-<!---->
+
+                <div id="home_" class="pg_1 page " >
+                    <!--TODO: add particles (cuz its fun)-->
+                    <!--TODO: add the Hello its ryan message-->
+                    <div class="hug_bottom_textbox rounded-circle">
+                        <h3>Hi, I am</h3>
+                        <h1>Ryan Waddell</h1>
+                        <h3>I am <span class="about_me_message">a programmer</span></h3>
                     </div>
                 </div>
-<!---->
-                <div id="about_me_" class="pg_2 page blue hidden" style="">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                    </p>
+
+                <div class="pg_2 page hidden">
+                    <iframe src="https://drive.google.com/file/d/1FnHZcjN1LKgFXTzUsVz6qwXxRaRHcAOt/preview" width="640" height="480"></iframe>               </div>
+
+                <div class="pg_3 page hidden" style="">
+                    <div class="container">
+
+                        <h3 class="text-center">Contact me</h3><br>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <!--I have permission to use this domain, it is not a virus :) It is used because I don't have php permissions on this server-->
+                                <form action="https://percussionscholars.com/send_me_email.php" method="post">
+                                    <input class="form-control" name="name" placeholder="Name..." /><br>
+                                    <input class="form-control" name="phone" placeholder="Phone..." /><br>
+                                    <input hidden value=":LKHJlgjkhhk;ljLGJHITYFO&^Tipuhp789yVHbjl{()UYP*oi;jbhjk.&%RI$^" name="integrity">
+                                    <input class="form-control" name="email" placeholder="E-mail..." /><br>
+                                    <input class="form-control" name="subject" placeholder="Subject line (optional)"><br>
+                                    <textarea class="form-control" name="message" placeholder="Write your awesome message here!" style="height:200px;"></textarea><br>
+                                    <input class="btn btn-primary" type="submit" value="Send" /><br><br>
+				    <p>Disabled for maintenance</p>
+                                </form>
+                            </div>
+                            <div class="col-md-4">
+                                <b>Contact Information:</b> <br>
+                                Phone: <a href="tel:8476822165">+1 847 682 2165</a><br>
+                                E-mail: <a href="mailto:cellocodingryan@gmail.com">cellocodingryan@gmail.com</a><br>
+                                
+                                <br><br>
+                                <b>Address at Home</b><br>
+                                812 Pinto Lane<br>
+                                Northbrook IL, 60062<br><br>
+                                <b>Outside Links</b><br>
+                                <a href="https://www.hackerrank.com/cellocodingryan">Hackerrank Profile</a><br>
+                                <a href="https://github.com/cellocodingryan">GitHub Profile</a><br>
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-<!---->
-                <div id="Resume_" class="pg_3 page hidden" style="">
-                    <p>
-                        page resume stuff it. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                    </p>
+                <div class="pg_-1 page hidden">
+                    <h1>Your message was sent!</h1>
+                    <h4>I will get back to you shortly</h4>
                 </div>
-<!---->
-                <div id="Portfolio_" class="pg_4 page hidden" style="">
-                    <p>
-                        Portfolio stuff Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                    </p>
+                <div class="pg_-2 page hidden">
+                    <h1>Sorry! Something went wrong :(</h1>
+                    <h6>If this continues, please just use my email which is listed again here:<br><a href="mailto:cellocodingryan@gmail.com">cellocodingryan@gmail.com</a> </h6>
+
                 </div>
-<!---->
-                <div id="My_Music_" class="pg_5 page hidden" style="">
-                    <p>
-                        music stuff tur adipiscing elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                    </p>
+                <div class="pg_404 page hidden">
+                    <h1>404 Page Not Found</h1>
                 </div>
-<!---->
-                <div id="Contact_" class="pg_6 page hidden" style="">
-                    <p>
-                        contact stuff elit. Curabitur in nisl quis massa ultricies tincidunt. Curabitur in sapien est. Ut a velit ac massa ultricies suscipit. Nulla ut neque in odio facilisis porta. Proin blandit felis et est mollis, quis tincidunt libero auctor. Morbi posuere, neque a egestas tempus, lectus nunc pretium sapien, sit amet dictum dui mi at nunc. Pellentesque sagittis quam in ante luctus dapibus. Sed eu nulla sollicitudin, fringilla libero at, aliquam enim.
-                    </p>
-                </div>
-<!---->
-<!---->
-<!---->
+
+
+
             </div>
         </div>
     </div>

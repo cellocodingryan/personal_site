@@ -2,18 +2,17 @@
 var current_page = "1";
 var disable_nav = false;
 var is_showing_nav = false;
+var has_temp_nav = false;
 $("nav a").click(function (e) {
     e.preventDefault();
 
-
     var id = $(this).attr('id')[2];
+    if (id === "-")
+        return;
     // noinspection EqualityComparisonWithCoercionJS
     if (current_page == id || disable_nav) { //== makes the string = to an int COOL
         show_hide_nav("hide");
-        console.log("nav hidden");
         return;
-    } else {
-        console.log(id);
     }
 
 
@@ -27,13 +26,29 @@ $("nav a").click(function (e) {
 
     window.history.pushState("", "",
         url
-            + '#'+$(this).attr("href"));
+        + ''+$(this).attr("href"));
 
     disable_nav = true;
+    if (has_temp_nav) {
+        $(".temp_nav").animate({
+            opacity: 0
+        },500,function() {
+            $(this).remove();
+        });
+    }
     show_hide_nav("hide");
     animate(id);
 });
+function temp_create_nav(where,id) {
+    has_temp_nav = true;
+    $("nav").append('<a id=pg'+id+' class="nav-link temp_nav" style="background: rgba(0,0,0,.2);border-radius:15px" onclick="event.preventDefault()" href="">'+where+'</a>');
+    $("#pg" + current_page).removeClass("active");
+
+}
 function animate(element,speed) {
+    if (current_page == element) {
+        return;
+    }
     if (speed == null)
         speed = 600;
     var h = window.innerHeight
@@ -42,44 +57,135 @@ function animate(element,speed) {
     if (element < current_page) {
         h *= -1;
     }
-    $(".pg_" + element)
-        .css("margin-top",h+"px")
-        .css("z-index",2)
-        .removeClass("hidden")
-        .animate({
-            marginTop: 0
-        }, speed, "linear", function() {
-            $(".pg_" + current_page).css("margin-top",(h)+"px").addClass("hidden");
-            current_page = element;
-            disable_nav = false;
-        });
-    $(".pg_" + current_page)
-        .css("margin-top","0px")
-        .css("z-index","1")
-}
+    $("#pg"+current_page).removeClass("active");
 
-if (window.location.href.indexOf('#') !== -1) {
-    var i = window.location.href.indexOf('#') + 1;
-    switch(window.location.href.substring(i,window.location.href.length)) {
-        case "about_me":
-            animate(2,0);
+    //move up and down over prev page
+    switch (Math.ceil(Math.random() * 3)) {
+        case (1):
+            $(".pg_" + element)
+                .css("margin-top",h+"px")
+                .css("z-index",2)
+                .removeClass("hidden")
+                .animate({
+                    marginTop: 0
+                }, speed, "linear", function() {
+                    $(".pg_" + current_page).css("margin-top",(h)+"px").addClass("hidden");
+                    current_page = element;
+                    disable_nav = false;
+                    $("#pg"+element).addClass("active");
+                    $(this).removeAttr("style");
+                });
             break;
-        case "resume":
-            animate(3,0);
+        case(2):
+            $(".pg_" + element)
+                .css("opacity",0)
+                .css("z-index",2)
+                .removeClass("hidden")
+                .animate({
+                    opacity: 1
+                }, speed, "linear", function() {
+                    $(this).removeAttr("style");
+                    $("#pg"+element).addClass("active");
+                });
+            $(".pg_" + current_page)
+                .css("opacity",1)
+                .css("z-index",1)
+                .animate({
+                    opacity: 0
+                }, speed, "linear", function() {
+                    $(this).removeAttr("style").addClass("hidden");
+                    current_page = element;
+                    disable_nav = false;
+                });
             break;
-        case "portfolio":
-            animate(4,0);
+        case(3):
+            $(".pg_" + element)
+                .css("margin-top",h+"px")
+                .css("z-index",2)
+                .removeClass("hidden")
+                .animate({
+                    marginTop: 0
+                }, speed, "linear", function() {
+                    $(".pg_" + current_page).css("margin-top",(h)+"px").addClass("hidden");
+                    current_page = element;
+                    disable_nav = false;
+                    $("#pg"+element).addClass("active");
+                    $(this).removeAttr("style");
+                });
+            $(".pg_" + current_page)
+                .animate({
+                    marginTop: (-1 * h + "px")
+                }, speed, "linear", function() {
+                    $(this).removeAttr("style");
+                });
             break;
-        case "my_music":
-            animate(5,0);
-            break;
-        case "contact":
-            animate(6,0);
-            break;
-        default:
+        case(4):
+            $(".pg_" + element)
+                .css("margin-top",h+"px")
+                .css("z-index",2)
+                .removeClass("hidden")
+                .animate({
+                    marginTop: 0
+                }, speed, "linear", function() {
+                    $(".pg_" + current_page).css("margin-top",(h)+"px").addClass("hidden");
+                    current_page = element;
+                    disable_nav = false;
+                    $("#pg"+element).addClass("active");
+                    $(this).removeAttr("style");
+                });
+            $(".pg_" + current_page)
+                .animate({
+                    marginTop: (-1 * h + "px")
+                }, speed, "linear", function() {
+                    $(this).removeAttr("style");
+                });
             break;
     }
+
+
+    //fade out some magic stuff here
+
+
 }
+
+function move_to_page_from_url(delay) {
+    if (delay === undefined) {
+        delay = 0;
+    }
+    if (window.location.href.indexOf('#') !== -1) {
+        var i = window.location.href.indexOf('#') + 1;
+        switch(window.location.href.substring(i,window.location.href.length)) {
+            case "resume":
+                animate(2,delay);
+                break;
+            case "contact":
+                animate(3,delay);
+                break;
+
+            case "contact_successful":
+                temp_create_nav("message successful page",-1);
+                animate(-1,delay);
+                break;
+            case "contact_failed":
+                temp_create_nav("message failed page",-2);
+                animate(-2,delay);
+                break;
+            case "home":
+                animate(1,delay);
+                break;
+            case "":
+                animate(1,delay);
+                break;
+            default:
+                if (current_page == 404)
+                    break;
+                temp_create_nav("404 page not found",404);
+                animate(404,delay);
+                break;
+        }
+    }
+}
+
 function show_hide_nav(show) {
 
     if (show === "show" || (show == null && is_showing_nav === false)) {
@@ -123,4 +229,9 @@ function show_hide_nav(show) {
 
 }
 
-//if the browser is resized beyond break points, refresh page
+
+
+$(window).on('hashchange', function(e){
+    move_to_page_from_url(null);
+});
+move_to_page_from_url();
