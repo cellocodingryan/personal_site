@@ -2,19 +2,12 @@
 var current_page = "1";
 var disable_nav = false;
 var is_showing_nav = false;
+var has_temp_nav = false;
 $("nav a").click(function (e) {
     e.preventDefault();
 
+    let page = $(this).attr("href");
 
-    var id = $(this).attr('id')[2];
-    // noinspection EqualityComparisonWithCoercionJS
-    if (current_page == id || disable_nav) { //== makes the string = to an int COOL
-        show_hide_nav("hide");
-        console.log("nav hidden");
-        return;
-    } else {
-        console.log(id);
-    }
 
 
     var url = window.location.href;
@@ -27,13 +20,22 @@ $("nav a").click(function (e) {
 
     window.history.pushState("", "",
         url
-            + '#'+$(this).attr("href"));
-
-    disable_nav = true;
-    show_hide_nav("hide");
-    animate(id);
+        + '#'+$(this).attr("href"));
+    console.log(url)
+    console.log(url+'#'+$(this).attr("href"))
+    animate(page);
 });
+function temp_create_nav(where,id) {
+    has_temp_nav = true;
+    $("nav").append('<a id=pg'+id+' class="nav-link temp_nav" style="background: rgba(0,0,0,.2);border-radius:15px" onclick="event.preventDefault()" href="">'+where+'</a>');
+    $("#pg" + current_page).removeClass("active");
+
+}
 function animate(element,speed) {
+    if (current_page == element || disable_nav) {
+        return;
+    }
+    disable_nav = true;
     if (speed == null)
         speed = 600;
     var h = window.innerHeight
@@ -42,85 +44,94 @@ function animate(element,speed) {
     if (element < current_page) {
         h *= -1;
     }
-    $(".pg_" + element)
-        .css("margin-top",h+"px")
-        .css("z-index",2)
-        .removeClass("hidden")
-        .animate({
-            marginTop: 0
-        }, speed, "linear", function() {
-            $(".pg_" + current_page).css("margin-top",(h)+"px").addClass("hidden");
-            current_page = element;
-            disable_nav = false;
-        });
-    $(".pg_" + current_page)
-        .css("margin-top","0px")
-        .css("z-index","1")
-}
+    
+    //move up and down over prev page
+    $("body").addClass("overflow-hidden");
+    $("nav").addClass("top-0");
+    $(`.pg_${element},.pg_${current_page}`).addClass("absolute");
+    
+    let oldpage = current_page;
+    current_page = element;
+    console.log(oldpage + " " + element)
 
-if (window.location.href.indexOf('#') !== -1) {
-    var i = window.location.href.indexOf('#') + 1;
-    switch(window.location.href.substring(i,window.location.href.length)) {
-        case "about_me":
-            animate(2,0);
-            break;
-        case "resume":
-            animate(3,0);
-            break;
-        case "portfolio":
-            animate(4,0);
-            break;
-        case "my_music":
-            animate(5,0);
-            break;
-        case "contact":
-            animate(6,0);
-            break;
-        default:
-            break;
+    let afterfun = () => {
+        console.log("afterfun")
+        $("nav").removeClass("top-0");
+        $("body").removeClass("overflow-hidden");
+        $(`.pg_${oldpage}`).addClass("hidden");
+        $(`.pg_${element},.pg_${oldpage}`).removeAttr("style").removeClass("absolute");
+        disable_nav = false;
     }
-}
-function show_hide_nav(show) {
 
-    if (show === "show" || (show == null && is_showing_nav === false)) {
-        is_showing_nav = true;
-        $(".grid").css("grid-template-columns", "7fr 1fr");
-        // $("#nav_button").css("display","none");
-        $(".pg_" + current_page).animate({
-            width: "12.5%",
-            minWidth: "12.5%",
-            left: "87.5%"
-        },200,"linear");
-        $(".panel-1").animate({
-            marginLeft: "0%"
-        },200,"linear");
-
-
-        return;
-    }
-    var w = window.innerWidth
-        || document.documentElement.clientWidth
-        || document.body.clientWidth;
-    if (is_showing_nav === true && (show == null || show === "hide")) {
-        is_showing_nav = false;
-        // $("#nav_button").css("display","block");
-        $(".pg_" + current_page).animate({
-            width: "100%",
-            minWidth: "100%",
-            left: "0%"
-        },200,"linear",function() {
-            $(this).removeAttr("style");
-        });
-        $(".panel-1").animate({
-            marginLeft: "-100%"
-        },200,"linear",function() {
-            $(".grid").css("grid-template-columns", "1fr 7fr");
-            $(this).removeAttr("style");
-        });
-
+    switch (Math.ceil(Math.random() * 3)) {
+        case (1):
+            //slide one over the other
+            $(".pg_" + element)
+                .css("margin-top",h+"px")
+                .css("z-index",2)
+                .removeClass("hidden")
+                .animate({
+                    marginTop: 0
+                }, speed, "linear", function() {
+                    afterfun();
+                });
+            break;
+        case(2):
+            //fade
+            $(".pg_" + element)
+                .css("opacity",0)
+                .css("z-index",2)
+                .removeClass("hidden")
+                .animate({
+                    opacity: 1
+                }, speed, "linear", function() {
+                });
+            $(".pg_" + oldpage)
+                .css("opacity",1)
+                .css("z-index",1)
+                .animate({
+                    opacity: 0
+                }, speed, "linear", function() {
+                    afterfun();
+                });
+            break;
+        case(3):
+            $(".pg_" + element)
+                .css("margin-top",h+"px")
+                .css("z-index",2)
+                .removeClass("hidden")
+                .animate({
+                    marginTop: 0
+                }, speed, "linear", function() {
+                    afterfun()
+                });
+            $(".pg_" + oldpage)
+                .animate({
+                    marginTop: (-1 * h + "px")
+                }, speed, "linear", function() {
+                });
+            break;
 
     }
 
+
+
 }
 
-//if the browser is resized beyond break points, refresh page
+function move_to_page_from_url(delay) {
+    if (delay === undefined) {
+        delay = 0;
+    }
+    if (window.location.href.indexOf('#') !== -1) {
+        var i = window.location.href.indexOf('#') + 1;
+        animate(window.location.href.substring(i,window.location.href.length),delay)
+    }
+}
+
+
+
+
+$(window).on('hashchange', function(e){
+    move_to_page_from_url(null);
+});
+move_to_page_from_url();
