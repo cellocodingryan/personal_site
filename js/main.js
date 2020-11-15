@@ -3,10 +3,31 @@ var current_page = "1";
 var disable_nav = false;
 var is_showing_nav = false;
 var has_temp_nav = false;
+
+function togglenav() {
+    if (!is_showing_nav) {
+        $("nav").addClass("expanded_nav").addClass("toosmall");
+        $(".main").css("margin-left","12rem");
+        is_showing_nav=true;
+    } else {
+        $("nav").removeClass("expanded_nav");
+        $(".main").removeAttr("style");
+        is_showing_nav=false;
+    }
+}
+$(".main").click(function(e) {
+    is_showing_nav = true;
+    togglenav();
+})
 $("nav a").click(function (e) {
     e.preventDefault();
 
     let page = $(this).attr("href");
+
+    if (page == "hamburger") {
+        togglenav();
+        return;
+    }
 
 
 

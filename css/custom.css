@@ -3,9 +3,11 @@ nav {
     transition: width 200ms ease !important;
 
 }
-nav:hover {
+nav:hover:not(.toosmall),.expanded_nav {
     width: 12rem;
 }
+
+
 
 nav svg {
     min-width: 2rem;
@@ -19,7 +21,9 @@ nav ul li a {
 nav ul li a:hover {
     filter: grayscale(0) opacity(1);
 }
-nav:hover ul li a span{
+
+
+nav:hover:not(.toosmall) ul li a span,.expanded_nav ul li a span{
     display: block;
 }
 .linkedin {
